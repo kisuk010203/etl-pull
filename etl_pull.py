@@ -12,9 +12,9 @@ from pathlib import Path
 import requests
 
 BASE_URL = "https://myetl.snu.ac.kr"
-CONFIG_PATH = Path(__file__).parent / ".etl_config.json"
-STATE_PATH = Path(__file__).parent / ".etl_state.json"
-SYNC_DIR = Path(__file__).parent / "courses"
+CONFIG_PATH = Path.cwd() / ".etl_config.json"
+STATE_PATH = Path.cwd() / ".etl_state.json"
+SYNC_DIR = Path.cwd()
 
 
 def load_config():
@@ -210,11 +210,10 @@ def cmd_init(args):
     save_config(config)
 
     # Create directories
-    SYNC_DIR.mkdir(exist_ok=True)
     for cid, info in course_map.items():
         course_dir = SYNC_DIR / info["dir_name"]
         course_dir.mkdir(exist_ok=True)
-        print(f"  Created: courses/{info['dir_name']}/")
+        print(f"  Created: {info['dir_name']}/")
 
     # Initial sync
     print("\nDownloading files...\n")
@@ -228,7 +227,7 @@ def cmd_init(args):
         print(f"    -> {dl} downloaded, {sk} skipped\n")
     save_state(state)
 
-    print(f"Done! {total_dl} file(s) downloaded to courses/")
+    print(f"Done! {total_dl} file(s) downloaded.")
 
 
 def cmd_pull(args):

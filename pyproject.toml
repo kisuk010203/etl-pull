@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "etl-pull"
+version = "0.1.0"
+description = "Sync course files from SNU myETL (Canvas LMS)"
+requires-python = ">=3.8"
+dependencies = ["requests"]
+
+[tool.setuptools]
+py-modules = ["etl_pull"]
+
+[project.scripts]
+etl-pull = "etl_pull:main"

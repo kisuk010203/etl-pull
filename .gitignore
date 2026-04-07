@@ -1,6 +1,8 @@
 **.mypy_cache**
+**__pycache__**
 **.venv**
 **.vscode**
 **courses**
+**etl_pull.egg-info**
 .etl*.json
 **.omc**
