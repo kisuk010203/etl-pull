@@ -6,3 +6,4 @@
 **etl_pull.egg-info**
 .etl*.json
 **.omc**
+.DS_Store
